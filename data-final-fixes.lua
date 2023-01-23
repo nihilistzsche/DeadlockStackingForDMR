@@ -165,10 +165,10 @@ local function main()
         local techs = {}
         local item_type = "item"
 
-        if tech_by_product[name] then
+        if (not item.tech or item.tech ~= "none") and tech_by_product[name] then
             techs = dedup_list(tech_by_product[name].tech)
             item_type = tech_by_product[name].type
-        else
+        elseif item.tech ~= "none" then
             techs = {item.tech}
         end
 
